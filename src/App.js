@@ -9,7 +9,7 @@ import PetsList from "./Components/PetsList";
 function App() {
   return (
     <div className="App">
-      <PetsList />
+      <PetsList/>
     </div>
   );
 }

@@ -5,13 +5,31 @@ import SearchBar from "./SearchBar";
 import TypeSelector from "./TypeSelector";
 
 function PetsList() {
-  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
   const [type, setType] = useState("");
+  const [adopt, setAdopt] = useState(pets);
 
-  let filterData = pets.filter((pet) => 
-    pet.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()) && (type === "" || pet.type === type)
-  );
-  const petList = filterData.map((pet) => <PetItem pet={pet} key={pet.id} />);
+  const handleAdopt = (petId) => {
+    const petList = adopt.filter((pet) => pet.id !== petId);
+    setAdopt(petList);
+  }
+
+const filteredData = adopt.filter((pet) => {
+  return pet.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+})
+
+const filterByname = filteredData.filter((pet) => {
+  return pet.type.includes(type);
+})
+
+  const petList = filterByname.map((pet) => {
+    return <PetItem adoptFunction={handleAdopt} pet={pet} key={pet.id}/>
+  })
+
+  
+
+
+
 
   return (
     <section id="doctors" className="doctor-section pt-140">
@@ -22,7 +40,7 @@ function PetsList() {
               <h1 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
                 Fur-ends
               </h1>
-              <SearchBar setQuery={setQuery}/>
+              <SearchBar setSearch={setSearch} />
               <br />
               Type:
               <TypeSelector setType={setType}/>

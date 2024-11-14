@@ -3,7 +3,7 @@ import React from 'react'
 const TypeSelector = ({setType}) => {
   return (
     <div>
-        <select onChange={(event) => setType(event.target.value)} className="form-select">
+         <select onChange={(event) => setType(event.target.value)}  className="form-select">
                 <option value="" selected>
                   All
                 </option>

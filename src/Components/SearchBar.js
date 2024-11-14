@@ -1,16 +1,17 @@
 import React from 'react'
 
-const SearchBar = ({setQuery}) => {
+const SearchBar = ( {setSearch} ) => {
   return (
     <div>
-        <input
+          <input
                   type="search"
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => setSearch(event.target.value)}
                   className="form-control rounded"
                   placeholder="Search"
                   aria-label="Search"
                   aria-describedby="search-addon"
-                />  
+                />
+
 
     </div>
   )
